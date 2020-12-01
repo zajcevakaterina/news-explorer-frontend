@@ -1,0 +1,32 @@
+.nothing-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nothing-found__image {
+  background: transparent;
+  background-image: url(../../images/newsCardList/not-found-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 24px;
+}
+
+.nothing-found__title {
+  font-family: "RobotoSlab", 'Arial', sans-serif;;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+.nothing-found__subtitle {
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  margin: 0;
+  max-width: 356px;
+}

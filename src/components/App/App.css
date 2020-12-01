@@ -1,0 +1,32 @@
+@import url(../../vendor/fonts/fonts.css);
+
+.app {
+  font-family: 'Roboto', Arial, sans-serif;
+  min-width: 320px;
+  min-height: 100vh;
+  color: #1A1B22;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+.app__section {
+  margin: 0 auto;
+  width: calc(100% - 208px);
+  max-width: 1440px;
+}
+
+@media screen and (max-width: 1439px) {
+  .app__section {
+    width: calc(100% - 80px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .app__section {
+  width: calc(100% - 32px);
+  min-width: 282px;
+  }
+}
+

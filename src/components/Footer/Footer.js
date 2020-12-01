@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+
 import "./Footer.css";
+
 import githubIcon from '../../images/githubIcon.svg'
 import fbIcon from '../../images/fbIcon.svg'
 

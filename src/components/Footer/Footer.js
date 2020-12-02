@@ -31,7 +31,7 @@ function Footer() {
           </li>
           <li className="footer__social-item">
             <a href="https://www.facebook.com/profile.php?id=100011341341301" target="_blank" className="footer__social-link">
-              <img alt="Профиль на Facebook" target="_blank" src={fbIcon} className="footer__social-icon"/>
+              <img alt="Профиль на Facebook" src={fbIcon} className="footer__social-icon"/>
             </a>
           </li>
         </ul>

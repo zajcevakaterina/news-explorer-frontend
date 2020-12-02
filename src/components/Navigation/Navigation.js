@@ -45,11 +45,9 @@ function Navigation({
           <div className={"nav__logout-icon " + (isSavedNewsPage ? "nav__logout-icon_dark" : '')}></div>
         </button>
       ) : (
-        <button className="nav__auth-btn" onClick={onAuthClick}>
+        <button className={"nav__auth-btn " + (isSavedNewsPage ? "nav__auth-btn_dark" : '')} onClick={onAuthClick}>
           Авторизоваться
         </button>
-        // эту кнопку не стилизую под светлый хэдер, так как на странице с сохраненными новостями ее не будет
-        // после привязки защиты роута
       )}
     </nav>
   );

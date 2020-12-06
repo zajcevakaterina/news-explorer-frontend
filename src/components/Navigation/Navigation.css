@@ -88,6 +88,7 @@
   transition: opacity 200ms linear;
 }
 
+.nav__auth-btn_dark,
 .nav__logout-btn_dark {
   color: #1a1b22;
   border: 1px solid #1a1b22;

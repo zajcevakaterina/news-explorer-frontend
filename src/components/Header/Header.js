@@ -21,18 +21,23 @@ function Header({ onAuthClick, isAuth }) {
   };
 
   const onAuthHeaderClick = () => {
-    if(isMobileMenuOpened) {
+    if (isMobileMenuOpened) {
       setIsMobileMenuOpened(false);
-      onAuthClick()
+      onAuthClick();
+      return
     }
-  }
+    onAuthClick();
+  };
 
   return (
-    <header className={"header " + (isMobileMenuOpened ? "header_menu-opened" : '')}>
+    <header
+      className={"header " + (isMobileMenuOpened ? "header_menu-opened" : "")}
+    >
       <div className="header__content app__section">
         <NavLink
           className={
-            "header__logo " + (isSavedNewsPage && !isMobileMenuOpened ? "header__logo_dark" : "")
+            "header__logo " +
+            (isSavedNewsPage && !isMobileMenuOpened ? "header__logo_dark" : "")
           }
           to="/"
         >

@@ -6,7 +6,7 @@ import openIcon from "../../images/header/openIcon.svg";
 import closeIcon from "../../images/header/closeIcon.svg";
 import openIconDark from "../../images/header/openIconDark.svg";
 
-function Header({ onAuthClick, isAuth }) {
+function Header({ onAuthClick, isAuth, onLogOut }) {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
 
   const location = useLocation();
@@ -45,6 +45,7 @@ function Header({ onAuthClick, isAuth }) {
         </NavLink>
         <Navigation
           isAuth={isAuth}
+          onLogOut={onLogOut}
           onAuthClick={onAuthHeaderClick}
           isMobileMenuOpened={isMobileMenuOpened}
           isSavedNewsPage={isSavedNewsPage}

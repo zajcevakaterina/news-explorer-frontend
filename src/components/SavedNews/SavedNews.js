@@ -3,12 +3,11 @@ import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import NewsCardList from "../NewsCardList/NewsCardList"
 
-function SavedNews() {
-  const isAuth = true // константа для теста, пока нет функционала (эта страница будет защищена авторизацией)
+function SavedNews({articles, deleteArticle, isAuth}) {
   return (
     <main className="saved-news">
-      <SavedNewsHeader name="Грета" quantity="5"/>
-      <NewsCardList isAuth={isAuth}/>
+      <SavedNewsHeader articles={articles}/>
+      {articles && articles.length > 0 && <NewsCardList articles={articles} deleteArticle={deleteArticle} isAuth={isAuth}/>}
     </main>
   );
 }

@@ -1,13 +1,17 @@
 import React from "react";
 import "./Navigation.css";
 import { NavLink } from "react-router-dom";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+
 function Navigation({
   isAuth,
   isMobileMenuOpened,
   onAuthClick,
   isSavedNewsPage,
+  onLogOut,
 }) {
-  
+  const currentUser = React.useContext(CurrentUserContext);
+
   return (
     <nav className={"nav " + (isMobileMenuOpened ? "nav_mob" : "")}>
       <ul className="nav__list">
@@ -40,12 +44,27 @@ function Navigation({
         )}
       </ul>
       {isAuth ? (
-        <button className={"nav__logout-btn " + (isSavedNewsPage ? "nav__logout-btn_dark" : '')}>
-          Грета
-          <div className={"nav__logout-icon " + (isSavedNewsPage ? "nav__logout-icon_dark" : '')}></div>
+        <button
+          className={
+            "nav__logout-btn " + (isSavedNewsPage ? "nav__logout-btn_dark" : "")
+          }
+          onClick={onLogOut}
+        >
+          {currentUser.name}
+          <div
+            className={
+              "nav__logout-icon " +
+              (isSavedNewsPage ? "nav__logout-icon_dark" : "")
+            }
+          ></div>
         </button>
       ) : (
-        <button className={"nav__auth-btn " + (isSavedNewsPage ? "nav__auth-btn_dark" : '')} onClick={onAuthClick}>
+        <button
+          className={
+            "nav__auth-btn " + (isSavedNewsPage ? "nav__auth-btn_dark" : "")
+          }
+          onClick={onAuthClick}
+        >
           Авторизоваться
         </button>
       )}

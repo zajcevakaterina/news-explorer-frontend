@@ -3,6 +3,7 @@
   background: #fff;
   border-radius: 10px;
   height: 100%;
+  display: block;
 }
 
 .news-card__keyword {
@@ -39,6 +40,9 @@
   justify-content: space-between;
   min-height: 304px;
   box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
 }
 
 .news-card__date {

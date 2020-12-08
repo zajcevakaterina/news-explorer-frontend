@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
-import { cardData } from "../../utils/cardData";
 import Preloader from "../Preloader/Preloader";
 import NothingFound from "../NothingFound/NothingFound";
 
-function NewsCardList({ isAuth }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [showError, setShowError] = useState(false);
+function NewsCardList({ isAuth, isLoading, notFound, articles, keyword, notFoundType, saveArticle, deleteArticle, openReg }) {
   const [indexOfLastCardShown, setIndexOfLastCardShown] = useState(2);
 
   const location = useLocation();
@@ -16,12 +13,12 @@ function NewsCardList({ isAuth }) {
 
   const cardsToShow = () => {
     if (isSavedNewsPage) {
-      return cardData;
+      return articles;
     } else {
-      return cardData.slice(0, indexOfLastCardShown + 1);
+      return articles.slice(0, indexOfLastCardShown + 1);
     }
   };
-  const showMoreButton = indexOfLastCardShown < cardData.length;
+  const showMoreButton = indexOfLastCardShown < articles.length;
 
   const showNewCards = () => {
     setIndexOfLastCardShown(indexOfLastCardShown + 3);
@@ -30,8 +27,8 @@ function NewsCardList({ isAuth }) {
   const Result = () => {
     if (isLoading) {
       return <Preloader />;
-    } else if (showError) {
-      return <NothingFound />;
+    } else if (notFound) {
+      return <NothingFound type={notFoundType} />;
     } else {
       return (
         <>
@@ -39,14 +36,18 @@ function NewsCardList({ isAuth }) {
             <h2 className="news-list__title">Результаты поиска</h2>
           )}
           <ul className="news-list__list">
-            {cardData &&
-              cardsToShow().map((card) => {
+            {articles &&
+              cardsToShow().map((card, index) => {
                 return (
-                  <li className="news-list__list-item" key={card.id}>
+                  <li className="news-list__list-item" key={'' + card.url + index}>
                     <NewsCard
                       card={card}
+                      keyword={keyword}
                       isSavedNewsPage={isSavedNewsPage}
                       isAuth={isAuth}
+                      saveArticle={saveArticle}
+                      deleteArticle={deleteArticle}
+                      openReg={openReg}
                     />
                   </li>
                 );

@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchForm.css";
 
-function SearchForm() {
+function SearchForm({ onSearch}) {
+  const [keyword, setKeyword] = useState(localStorage.getItem('keyword') || '');
+  const [showInputError, setShowInputError] = useState(false);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (keyword === "") {
+      setShowInputError(true);
+    } else {
+      setShowInputError(false);
+      onSearch(keyword);
+    }
+  };
+
   return (
     <section className="search">
       <div className="search__background"></div>
@@ -12,13 +25,22 @@ function SearchForm() {
             Находите самые свежие статьи на любую тему и сохраняйте в своём
             личном кабинете.
           </p>
-          <form className="search__form">
+          <form className="search__form" onSubmit={onSubmit}>
             <input
               className="search__input"
               type="text"
               placeholder="Введите тему новости"
               required
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
             ></input>
+            <span
+              className={`search__input-error ${
+                showInputError ? "search__input-error_active" : ""
+              }`}
+            >
+              Введите ключевое слово
+            </span>
             <button type="submit" className="search__submit-btn">
               Искать
             </button>

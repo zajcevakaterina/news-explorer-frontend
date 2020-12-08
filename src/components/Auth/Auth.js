@@ -9,25 +9,17 @@ function Auth({
   submitBtnText,
   altBtnText,
   altAction,
+  errors,
+  handleChange,
+  isValid,
+  values,
+  onSubmit,
+  authErrorText
 }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
 
   const handleSubmitAuth = (e) => {
     e.preventDefault();
-    // onAuth(
-    //   email,
-    //   password);
-    onClose();
+    onSubmit(values.email, values.password);
   };
 
   return (
@@ -39,6 +31,8 @@ function Auth({
       submitBtnText={submitBtnText}
       altBtnText={altBtnText}
       altAction={altAction}
+      isValid={isValid}
+      errorText={authErrorText}
     >
       <label className="popup-form__label">Email</label>
       <input
@@ -48,10 +42,10 @@ function Auth({
         id="email"
         name="email"
         className="popup-form__input"
-        value={email}
-        onChange={handleChangeEmail}
+        value={values.email || ''}
+        onChange={handleChange}
       />
-      <span className="popup-form__error" id="email-error"></span>
+      <span className="popup-form__error" id="email-error">{errors.email || ""}</span>
 
       <label className="popup-form__label">Пароль</label>
       <input
@@ -61,11 +55,11 @@ function Auth({
         placeholder="Введите пароль"
         id="password"
         name="password"
-        value={password}
-        onChange={handleChangePassword}
+        value={values.password || ''}
+        onChange={handleChange}
         className="popup-form__input"
       />
-      <span className="popup-form__error" id="password-error"></span>
+      <span className="popup-form__error" id="password-error">{errors.password || ""}</span>
     </PopupWithForm>
   );
 }

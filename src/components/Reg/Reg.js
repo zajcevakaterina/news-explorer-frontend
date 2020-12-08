@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./Reg.css";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
@@ -9,30 +9,16 @@ function Reg({
   submitBtnText,
   altBtnText,
   altAction,
+  errors,
+  handleChange,
+  isValid,
+  values,
+  onSubmit,
+  regErrorText
 }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleChangeName = (e) => {
-    setName(e.target.value);
-  };
-
   const handleSubmitReg = (e) => {
     e.preventDefault();
-    // onReg(
-    //   email,
-    //   password, 
-    //   name);
-    onClose();
+    onSubmit(values.email, values.password, values.name);
   };
 
   return (
@@ -44,6 +30,8 @@ function Reg({
       submitBtnText={submitBtnText}
       altBtnText={altBtnText}
       altAction={altAction}
+      isValid={isValid}
+      errorText={regErrorText}
     >
       <label className="popup-form__label">Email</label>
       <input
@@ -53,10 +41,12 @@ function Reg({
         id="reg-email"
         name="email"
         className="popup-form__input"
-        value={email}
-        onChange={handleChangeEmail}
+        value={values.email || ""}
+        onChange={handleChange}
       />
-      <span className="popup-form__error" id="reg-email-error"></span>
+      <span className="popup-form__error" id="reg-email-error">
+        {errors.email || ""}
+      </span>
 
       <label className="popup-form__label">Пароль</label>
       <input
@@ -66,11 +56,13 @@ function Reg({
         placeholder="Введите пароль"
         id="reg-password"
         name="password"
-        value={password}
-        onChange={handleChangePassword}
+        value={values.password || ""}
+        onChange={handleChange}
         className="popup-form__input"
       />
-      <span className="popup-form__error" id="reg-password-error"></span>
+      <span className="popup-form__error" id="reg-password-error">
+        {errors.password || ""}
+      </span>
 
       <label className="popup-form__label">Имя</label>
       <input
@@ -80,11 +72,13 @@ function Reg({
         placeholder="Введите своё имя"
         id="name"
         name="name"
-        value={name}
-        onChange={handleChangeName}
+        value={values.name || ""}
+        onChange={handleChange}
         className="popup-form__input"
       />
-      <span className="popup-form__error" id="name-error"></span>
+      <span className="popup-form__error" id="name-error">
+        {errors.name || ""}
+      </span>
     </PopupWithForm>
   );
 }

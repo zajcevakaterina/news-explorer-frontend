@@ -73,6 +73,25 @@
   color: #b6bcbf;
 }
 
+.search__input-error {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  margin: 0;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+  position: absolute;
+  bottom: 5px;
+  left: 25px;
+}
+
+.search__input-error_active {
+  display: block;
+  opacity: 1;
+}
+
 .search__submit-btn {
   min-width: 168px;
   min-height: 64px;
@@ -166,5 +185,10 @@
     position: relative;
     min-width: 100%;
     min-height: 56px;
+  }
+
+  .search__input-error {
+    top: 38px;
+    left: 18px;
   }
 }
